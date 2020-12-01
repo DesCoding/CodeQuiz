@@ -1,5 +1,19 @@
-# Code Quiz
- Pop quiz!  Take this timed coding quiz.  Quesitons will be multiple-choice.
+# 04 Web APIs: Code Quiz
+
+## Your Task
+
+As you proceed in your journey to becoming a full-stack web developer, it’s likely that you’ll be asked to complete a coding assessment, perhaps as part of an interview process. A typical coding assessment is a combination of multiple-choice questions and interactive coding challenges. 
+
+To help you become familiar with these tests and give you a chance to apply the skills from this module, this week’s homework invites you to build a timed coding quiz with multiple-choice questions. This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean, polished, and responsive user interface. This week’s coursework will teach you all the skills you need to succeed in this assignment.
+
+
+## User Story
+
+```
+AS A coding boot camp student
+I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
+SO THAT I can gauge my progress compared to my peers
+```
 
 
 ## Acceptance Criteria
@@ -65,9 +79,13 @@ This homework is graded based on the following criteria:
 * Repository contains quality README file with description, screenshot, and link to deployed application.
 
 
-## Demo
+## Review
 
-URL for repo:
+You are required to submit BOTH of the following for review:
 
-URL for application:
+* The URL of the functional, deployed application.
 
+* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
+
+- - -
+© 2020 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
