@@ -3,17 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Code Quiz</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Quiz</title>
 </head>
 <body>
-    <button id="startButton">Start Quiz</button>
+    <nav class="navbar navbar-expand-md fixed-top">
+        <div class="container-fluid">
+              <div id="highscore" class="nav-item nav-link"> View High Scores</div>
+              <h1 id="navbar-title">Desiree's Timed Coding Quiz</h1>
+              <table id=timers style="visibility: hidden;">
+                <tr>
+                  <td> Time left in game: </td>
+                  <td> <span id="gameTimer" class="nav-item"></span> </td>
+                </tr>
+                 <tr>
+                  <td>Time left for this question:</td>
+                  <td> <span id="quesTimer" class="nav-item"></span> </td>
+                </tr>
+              </table>
+          </div>
+        </div>
+    </nav>
 
-    <div id="quizQuestions"></div>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-3">It's Quiz Time!</h1>
+          <p class="lead">Click "Start Quiz" and let the fun begin.</p>
 
-    <button id="submit">Submit Quiz</button>
+          <button id="startButton">Start Quiz</button>
 
-    <div id="results"></div>
-    
+          <div id="quizQuestions"></div>
+      
+          <button id="submit">Submit Quiz</button>
+      
+          <div id="results"></div>
+                  
+        
+        </div>
+      </div>
+
 </body>
 
 <script src="style.js"></script>

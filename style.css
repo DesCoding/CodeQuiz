@@ -1,0 +1,12 @@
+body{
+    background-color: seagreen;
+}
+.jumbotron-fluid{
+    float: center;
+    margin: 50px;
+    background-color: pink;
+}
+.navbar{
+    float: top;
+    background-color: sandybrown;
+}

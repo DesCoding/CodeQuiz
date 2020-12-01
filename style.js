@@ -59,33 +59,93 @@ const myQuestions = [
       correctAnswer: "Hyper Text Markup Language"
     },
     {
-      question: "What does CSS stand for?",
-      answers: {
-        a: "Cascading Style Sheet",
-        b: "Creative Style Sheet",
-        c: "Commodore Styled Sheet"
-      },
-      correctAnswer: "a"
+      question: "What is CSS an abreviation for?",
+      answers: [
+        "Cascading Style Sheet",
+        "Creative Style Sheet",
+        "Commodore Styled Sheet"
+      ],
+      correctAnswer: "Cascading Style Sheet"
     },
     {
       question: "What does DOM stand for?",
-      answers: {
-        a: "Digital Operating Model",
-        b: "Document Object Model",
-        c: "Data Overload Manipulation",
-        d: "None of the Above"
-      },
-      correctAnswer: "b"
+      answers: [
+        "Digital Operating Model",
+        "Document Object Model",
+        "Data Overload Manipulation",
+        "None of the Above"
+      ],
+      correctAnswer: "Document Object Model"
     },
     {
       question: "What JavaScript debugging tool prints data to a browser console?",
-      answers: {
-        a: "console.print",
-        b: "console(log)",
-        c: "console.log",
-        d: "console(print)"
-      },
-      correctAnswer: "c"
+      answers: [
+        "console.print",
+        "console(log)",
+        "console.log",
+        "console(print)"
+      ],
+      correctAnswer: "console.log"
+    },
+    {
+      question: "If / Else conditions are surrounded by ____________?",
+      answers: [
+        "curly brackets",
+        "quotation marks",
+        "total confusion",
+        "parenthesis"
+      ],
+      correctAnswer: "parenthesis"
+    },
+    {
+      question: "A naming convention, commonly used in JavaScript, which capitalizes the first letter of each word excep for the first letter...",
+      answers: [
+        "capital case",
+        "camel case",
+        "coding case ",
+        "none of the above"
+      ],
+      correctAnswer: "camel case"
+    },
+    {
+      question: "Primitive data includes...",
+      answers: [
+        "strings ",
+        "numbers",
+        "boolean",
+        "all of the above"
+      ],
+      correctAnswer: "all of the above"
+    },
+    {
+      question: "Which of the following is an operator used in JaveScript?",
+      answers: [
+        "%",
+        "/",
+        "*",
+        "all of the above"
+      ],
+      correctAnswer: "none of the above"
+    },
+    {
+      question: "Math.random generates a ________?",
+      answers: [
+        "random number between 1 and infinity",
+        "random number between 0 and 1",
+        "random number between 0 and 100",
+        "random math calculations"
+      ],
+      correctAnswer: "random number between 0 and 1"
+    },
+    {
+      question: "When typing code, the web developer should__________.",
+      answers: [
+        "comment where appropriate to help other who may work with the code at a later date",
+        "practice D.R.Y. (don't repeat yourself) to esnure code is logical and consise",
+        "collaborate with others to problem solve",
+        "all of the above"
+      ],
+      correctAnswer: "all of the above"
     },
   ];
 
