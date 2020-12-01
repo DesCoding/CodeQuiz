@@ -3,6 +3,9 @@ const startButton = document.getElementById('startButton');
 const quizContainer = document.getElementById('quizQuestions');
 const resultsContainer = document.getElementById('results');
 const submitButton = document.getElementById('submit');
+const gameTimer = document.getElementById('gameTimer');
+var secondsLeft = 75;
+var score = 0;
 
 //functions to ask questions and show/track results
 function buildQuiz(){
@@ -12,36 +15,76 @@ function buildQuiz(){
 }
 
 function showResults(){
-console.log("Hi") 
 }
 
 function showQuestions(){
-console.log("questions")
-console.log(myQuestions)
-pickQuestions(0)
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    gameTimer.textContent = secondsLeft + " seconds";
+
+    if(secondsLeft === 0) {
+      clearInterval(timerInterval);
+   }
+
+  }, 1000);
+  pickQuestions(0)
+
 }
 
-function pickQuestions(index){
-  quizContainer.append(myQuestions[index].question)
-  console.log(myQuestions[index].answers.length)
+function nextQuestion(){
+console.log(this)
+   if(this.value === "correct"){
+    score++;
+    pickQuestions(1)
+    pickQuestions(2)
+    pickQuestions(3)
+    pickQuestions(4)
+    pickQuestions(5)
+    pickQuestions(6)
+    pickQuestions(7)
+    pickQuestions(8)
+    pickQuestions(9)
 
+  } else {
+    secondsLeft = secondsLeft - 5;
+    pickQuestions(1)
+    pickQuestions(1)
+    pickQuestions(2)
+    pickQuestions(3)
+    pickQuestions(4)
+    pickQuestions(5)
+    pickQuestions(6)
+    pickQuestions(7)
+    pickQuestions(8)
+    pickQuestions(9)
+  }
+}
+/*alert("You got " + score + "/" + questions.length);
+}*/
+
+function pickQuestions(index){
+  quizContainer.innerHTML = "";
+  quizContainer.append(myQuestions[index].question)
+  
   for(var i=0; i < myQuestions[index].answers.length; i++){
   const button = document.createElement("button")
+  const buttonPlacement = document.createElement("p")
   button.innerHTML=myQuestions[index].answers[i];
-  console.log(myQuestions[index].correctAnswer)
-  console.log(myQuestions[index].answers)
+    
+  button.addEventListener('click', nextQuestion)
+ 
   if(myQuestions[index].answers[i] === myQuestions[index].correctAnswer){
   button.setAttribute("value", "correct")
+  button.setAttribute("class", "correctAnswer onClickAnswer")
   }
   else{
-    button.setAttribute("value", "wrong")
+    button.setAttribute("value", "wrong") 
+    button.setAttribute("class", "wrongAnswer onClickAnswer")
   }
-  quizContainer.append(button);
-
+  buttonPlacement.append(button);
+  quizContainer.append(buttonPlacement);
   }
-  
   }
-
 
 // After click of submit button, show results
 startButton.addEventListener('click', showQuestions)
@@ -152,22 +195,9 @@ const myQuestions = [
 
 
 /*
-var score = 0;
 
-for(var i=0; i < questions.length; i++){
-    var response = window.prompt(questions[i].prompt);
-    if(response == questions[i].answer){
-      score++;
 
-      alert("Good job!");
 
-    } else {
-
-      alert("Please try again.");
-
-    }
-}
-alert("You got " + score + "/" + questions.length);*/
 
 /*
 must be timed

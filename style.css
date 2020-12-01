@@ -1,12 +1,23 @@
 body{
-    background-color: seagreen;
+    background-color: rgb(34, 185, 196);
 }
 .jumbotron-fluid{
     float: center;
     margin: 50px;
-    background-color: pink;
+    background-color: rgb(90, 221, 221);
+    border-radius: 30%;
 }
 .navbar{
     float: top;
-    background-color: sandybrown;
+    background-color: rgb(120, 227, 243);
+    border-radius: 1%;
+}
+.correctAnswer,.wrongAnswer{
+    background-color: rgb(175, 136, 175);
+}
+.correctAnswer:focus{
+    background-color: green;
+}
+.wrongAnswer:focus{
+    background-color: red;
 }
