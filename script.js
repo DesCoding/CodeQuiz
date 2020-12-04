@@ -31,33 +31,19 @@ function showQuestions(){
 
 }
 
+var i = 0;
+
 function nextQuestion(){
+  i++;
 console.log(this)
    if(this.value === "correct"){
-    score++;
-    pickQuestions(1)
-    pickQuestions(2)
-    pickQuestions(3)
-    pickQuestions(4)
-    pickQuestions(5)
-    pickQuestions(6)
-    pickQuestions(7)
-    pickQuestions(8)
-    pickQuestions(9)
-
+    score++; 
+    //write high score as an object, retrieve score as value.  write this to local storage (add to object)
   } else {
     secondsLeft = secondsLeft - 5;
-    pickQuestions(1)
-    pickQuestions(1)
-    pickQuestions(2)
-    pickQuestions(3)
-    pickQuestions(4)
-    pickQuestions(5)
-    pickQuestions(6)
-    pickQuestions(7)
-    pickQuestions(8)
-    pickQuestions(9)
-  }
+  
+
+  }  pickQuestions(i)
 }
 /*alert("You got " + score + "/" + questions.length);
 }*/
