@@ -192,16 +192,104 @@ const myQuestions = [
     },
   ];
 
+  // creates input for user to add initials
+  let par = document.createElement("p");
+
+  let initialsLabel = document.createElement("label");
+  initialsLabel.setAttribute("for","userInitials");
+  initialsLabel.textContent = "Enter Initials: ";
+
+  let initialsInput = document.createElement("input");
+  initialsInput.setAttribute("id","userInitials");
+  initialsInput.setAttribute("name","userInitials");
+  initialsInput.setAttribute("minlength","3");
+  initialsInput.setAttribute("maxlength","3");
+  initialsInput.setAttribute("size","3");
 
 
-/*
+  mainEl.appendChild(heading);
+  mainEl.appendChild(instructions);
+  mainEl.appendChild(initialsLabel);
+  mainEl.appendChild(initialsInput);
+  mainEl.appendChild(par);
+  mainEl.appendChild(playAgain);
+
+  playAgain.addEventListener("click", init);
+
+  initialsInput.addEventListener("input", function() {
+    initialsInput.value = initialsInput.value.toUpperCase();
+    if ( initialsInput.value.length === 3 ) { 
+
+      //create object for this score
+      let thisScore = [ { type: quizType, name: initialsInput.value, score: score } ]; 
+
+      //get highscores from memory
+      let storedScores = JSON.parse(localStorage.getItem("highScores")); 
+      if (test) { console.log("storedScore",storedScores); }
+
+      if (storedScores !== null) { 
+        storedScores.push(thisScore[0]); 
+      } else {
+        storedScores = thisScore;
+      }
+
+      localStorage.setItem("highScores", JSON.stringify(storedScores));
+      highScores();
+    }
+  });
 
 
+/*function highScores() {
+  stopTime();
+  clearDetails();
+
+  timerTab.setAttribute("style", "visibility: hidden;");
+
+  //get scores from storage
+  let storedScores = JSON.parse(localStorage.getItem("highScores")); 
+
+  // draw heading
+  let heading = document.createElement("h2");
+  heading.setAttribute("id", "main-heading");
+  heading.textContent = "Top 5 High Score Hall of Fame";
+
+  mainEl.appendChild(heading);
+
+  // Render a new li for each score
+  // TODO check for this error 
+  if ( storedScores !== null ) {
+    // sort scores
+    storedScores.sort((a,b) => (a.score < b.score) ? 1: -1);
+
+    // sets the number of scores to display to 5 or the number of games played. Which ever is less
+    let numScores2Display = 5;
+    if ( storedScores.length < 5 ) { 
+      numScores2Display = storedScores.length; 
+    }
+
+    for (var i = 0; i < numScores2Display; i++) {
+      var s = storedScores[i];
+
+      var p = document.createElement("p");
+      p.textContent = s.name + " " + s.score + " ( " + s.type + " )";
+      mainEl.appendChild(p);
+    }
+  } else {
+    var p = document.createElement("p");
+    p.textContent =  "Your Initials Here!"
+    mainEl.appendChild(p);
+  }
 
 
-/*
-must be timed
-track score
-buttons to click for answers
-show user score and ask for initials
-*/
+  // creates button to start the game
+  let playAgain = document.createElement("button");
+  playAgain.setAttribute("id", "playAgain");
+  playAgain.setAttribute("class", "btn btn-secondary");
+  playAgain.textContent = "Play!";
+
+  mainEl.appendChild(playAgain);
+
+  playAgain.addEventListener("click", init);
+}
+
+highscoreDiv.addEventListener("click", highScores);*/
