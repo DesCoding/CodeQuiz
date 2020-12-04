@@ -154,7 +154,7 @@ const myQuestions = [
         "*",
         "all of the above"
       ],
-      correctAnswer: "none of the above"
+      correctAnswer: "all of the above"
     },
     {
       question: "Math.random generates a ________?",
