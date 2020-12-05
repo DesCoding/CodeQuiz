@@ -1,4 +1,20 @@
-# 04 Web APIs: Code Quiz
+# Code Quiz
+
+This CodeQuiz is a fun way to test your coding knowledge!  Here's how it works:
+
+From the home page, the user has an option to click a button to "Start Quiz".
+
+Upon clicking the button, the timer begins at 100 seconds and the user is presented with a series of questions. 
+
+The user's score is dependant upon how quickly they're able to correctly complete the questions.  Time remaining on the clock becomes the user's score.  Answer quickly and correctly, you might just get a high score! Answer incorrectly, ouch!  Brace yourself for a time penalty (15 seconds are subtracted from time remaining).
+
+When time runs out and/or all questions are answered, the user is presented with their final score and asked to enter their initials. Their final score and initials are then stored in localStorage.
+
+If a question is answered incorrectly, additional time is subtracted from the timer.
+
+The timer stops when all questions have been answered or the timer reaches 0.
+
+After the game ends, the user can save their initials and score to a highscores view using local storage.
 
 ## Your Task
 

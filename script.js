@@ -3,15 +3,16 @@ const startButton = document.getElementById('startButton');
 const quizContainer = document.getElementById('quizQuestions');
 const resultsContainer = document.getElementById('results');
 const submitButton = document.getElementById('submit');
-const gameTimer = document.getElementById('gameTimer');
-var secondsLeft = 75;
+const gameTimerEl = document.getElementById('gameTimer');
+const highscoreDiv = document.querySelector ("#highscore");
+const mainEl = document.querySelector("#results");
+var secondsLeft = 100;
 var score = 0;
 
 //functions to ask questions and show/track results
 function buildQuiz(){
   //store the html output
   const output = [];
- // myQuestions.
 }
 
 function showResults(){
@@ -38,15 +39,14 @@ function nextQuestion(){
 console.log(this)
    if(this.value === "correct"){
     score++; 
-    //write high score as an object, retrieve score as value.  write this to local storage (add to object)
+  
+    //Time penalty subtracts 15 seconds from timer if anwer is incorrect.
   } else {
-    secondsLeft = secondsLeft - 5;
+    secondsLeft = secondsLeft - 15;
   
 
   }  pickQuestions(i)
 }
-/*alert("You got " + score + "/" + questions.length);
-}*/
 
 function pickQuestions(index){
   quizContainer.innerHTML = "";
@@ -76,6 +76,11 @@ function pickQuestions(index){
 startButton.addEventListener('click', showQuestions)
 submitButton.addEventListener('click', showResults);
 
+var score = 0;
+var highscore = 0
+if (score > localStorage.getItem("highscore")) {
+  localStorage.setItem("highscore", score);
+}
 
 const myQuestions = [
     {
@@ -169,9 +174,9 @@ const myQuestions = [
     {
       question: "When typing code, the web developer should__________.",
       answers: [
-        "comment where appropriate to help other who may work with the code at a later date",
-        "practice D.R.Y. (don't repeat yourself) to esnure code is logical and consise",
-        "collaborate with others to problem solve",
+        "Comment where appropriate to assist others who may work in the code at a later date.",
+        "Practice D.R.Y. (don't repeat yourself) to esnure code is logical and consise.",
+        "Collaborate with others to problem solve.",
         "all of the above"
       ],
       correctAnswer: "all of the above"
@@ -193,14 +198,14 @@ const myQuestions = [
   initialsInput.setAttribute("size","3");
 
 
-  mainEl.appendChild(heading);
-  mainEl.appendChild(instructions);
-  mainEl.appendChild(initialsLabel);
-  mainEl.appendChild(initialsInput);
-  mainEl.appendChild(par);
-  mainEl.appendChild(playAgain);
+  // mainEl.appendChild(heading);
+  // mainEl.appendChild(instructions);
+  // mainEl.appendChild(initialsLabel);
+  // mainEl.appendChild(initialsInput);
+  // mainEl.appendChild(par);
+  // mainEl.appendChild(playAgain);
 
-  playAgain.addEventListener("click", init);
+  // playAgain.addEventListener("click", init);
 
   initialsInput.addEventListener("input", function() {
     initialsInput.value = initialsInput.value.toUpperCase();
@@ -223,14 +228,15 @@ const myQuestions = [
       highScores();
     }
   });
+//Capture remaining time on game timer as each user's score
+  let userScore = (gameTimer);
 
-
-/*function highScores() {
+function highScores() {
   stopTime();
   clearDetails();
 
-  timerTab.setAttribute("style", "visibility: hidden;");
-
+  timerTab.setAttribute("style");
+  highscoreDiv.addEventListener("click", highScores);
   //get scores from storage
   let storedScores = JSON.parse(localStorage.getItem("highScores")); 
 
@@ -265,17 +271,13 @@ const myQuestions = [
     p.textContent =  "Your Initials Here!"
     mainEl.appendChild(p);
   }
+ // creates button to start the game
+ let playAgain = document.createElement("button");
+ playAgain.setAttribute("id", "playAgain");
+ playAgain.setAttribute("class", "btn btn-secondary");
+ playAgain.textContent = "Play!";
 
+ mainEl.appendChild(playAgain);
 
-  // creates button to start the game
-  let playAgain = document.createElement("button");
-  playAgain.setAttribute("id", "playAgain");
-  playAgain.setAttribute("class", "btn btn-secondary");
-  playAgain.textContent = "Play!";
-
-  mainEl.appendChild(playAgain);
-
-  playAgain.addEventListener("click", init);
+ playAgain.addEventListener("click", init);
 }
-
-highscoreDiv.addEventListener("click", highScores);*/
