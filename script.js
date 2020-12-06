@@ -67,11 +67,16 @@ console.log(this)
   //adding my score object data to the array of highscore
   highscore.push(myScore)
   highscore = myScore
-  document.getElementById("highscore").appendChild
-  console.log(myScore)
-  
-  
 
+  //get score and initials
+  let hsTable = localStorage.getItem("highscore")
+  
+  // const myScore = [...JSON.parse(hsTable), result] 
+  // localStorage.setItem('highscore', JSON.stringify(myScore))
+  console.log(myScore)
+  alert(initials + " Your socre is "+secondsLeft)
+  
+  
   //set updated high score array to local storage
   localStorage.setItem("highscore", JSON.stringify(highscore))
 } 
@@ -208,15 +213,4 @@ const myQuestions = [
     },
   ];
 
-//attempting to display high score
-  // function renderMyScore() {
-     
-  //   // Render a new li for each todo
-  //   for (var i = 0; i < myScore.length; i++) {
-  //     var myScore = myScore[i];
-  
-  //     var li = document.createElement("li");
-  //     li.textContent = myScore;
-  //     highscore.appendChild(li);
-  //   }
-  // }
+
