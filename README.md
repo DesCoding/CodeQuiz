@@ -10,7 +10,7 @@ The user's score is dependant upon how quickly they're able to correctly complet
 
 # Deployed
 
-Repo Link:  https://github.com/DesCoding/CodeQuiz
+Repo Link:  https://descoding.github.io/CodeQuiz/
 
 Site Link:  https://descoding.github.io/CodeQuiz/index.html
 
