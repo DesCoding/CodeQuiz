@@ -2,12 +2,12 @@
 const startButton = document.getElementById('startButton');
 const quizContainer = document.getElementById('quizQuestions');
 const resultsContainer = document.getElementById('results');
-const submitButton = document.getElementById('submit');
 const gameTimerEl = document.getElementById('gameTimer');
 const highscoreDiv = document.querySelector ("#highscore");
-const mainEl = document.querySelector("#results");
 var secondsLeft = 100;
-var score = 0;
+var score = 100 - secondsLeft;
+
+var highscore=[]
 
 //functions to ask questions and show/track results
 function buildQuiz(){
@@ -16,12 +16,14 @@ function buildQuiz(){
 }
 
 function showResults(){
+  var highscore = JSON.parse(localStorage.getItem(highscore))
 }
+var timerInterval;
 
 function showQuestions(){
-  var timerInterval = setInterval(function() {
+  timerInterval = setInterval(function() {
     secondsLeft--;
-    gameTimer.textContent = secondsLeft + " seconds";
+    gameTimer.textContent = secondsLeft;
 
     if(secondsLeft === 0) {
       clearInterval(timerInterval);
@@ -40,15 +42,43 @@ console.log(this)
    if(this.value === "correct"){
     score++; 
   
-    //Time penalty subtracts 15 seconds from timer if anwer is incorrect.
+  //Time penalty subtracts 15 seconds from timer if answer is incorrect.
   } else {
     secondsLeft = secondsLeft - 15;
   
 
-  }  pickQuestions(i)
-}
+  }  
+  if(i<myQuestions.length){
+    
+  pickQuestions(i) 
 
+}else {
+  //clears final question from the screen
+  quizContainer.innerHTML=""
+  //prompting user to input initials
+   var initials = prompt("Please enter your initials.")
+   //stops the game time
+   clearInterval(timerInterval);
+  //create object to capture initials and high score
+  var myScore = {
+    userName: initials,
+    highScores: gameTimerEl.innerHTML
+  }
+  //adding my score object data to the array of highscore
+  highscore.push(myScore)
+  highscore = myScore
+  document.getElementById("highscore").appendChild
+  console.log(myScore)
+  
+  
+
+  //set updated high score array to local storage
+  localStorage.setItem("highscore", JSON.stringify(highscore))
+} 
+}
+//choose quesitons and assign styling for correct vs not correct answers
 function pickQuestions(index){
+  console.log(index)
   quizContainer.innerHTML = "";
   quizContainer.append(myQuestions[index].question)
   
@@ -70,18 +100,13 @@ function pickQuestions(index){
   buttonPlacement.append(button);
   quizContainer.append(buttonPlacement);
   }
-  }
-
-// After click of submit button, show results
-startButton.addEventListener('click', showQuestions)
-submitButton.addEventListener('click', showResults);
-
-var score = 0;
-var highscore = 0
-if (score > localStorage.getItem("highscore")) {
-  localStorage.setItem("highscore", score);
 }
 
+// After click of start button, show questions
+startButton.addEventListener('click', showQuestions)
+startButton.addEventListener('click', showResults);
+
+//array of questions for quiz
 const myQuestions = [
     {
       question: "What does HTML stand for?",
@@ -183,101 +208,15 @@ const myQuestions = [
     },
   ];
 
-  // creates input for user to add initials
-  let par = document.createElement("p");
-
-  let initialsLabel = document.createElement("label");
-  initialsLabel.setAttribute("for","userInitials");
-  initialsLabel.textContent = "Enter Initials: ";
-
-  let initialsInput = document.createElement("input");
-  initialsInput.setAttribute("id","userInitials");
-  initialsInput.setAttribute("name","userInitials");
-  initialsInput.setAttribute("minlength","3");
-  initialsInput.setAttribute("maxlength","3");
-  initialsInput.setAttribute("size","3");
-
-
-  // mainEl.appendChild(heading);
-  // mainEl.appendChild(instructions);
-  // mainEl.appendChild(initialsLabel);
-  // mainEl.appendChild(initialsInput);
-  // mainEl.appendChild(par);
-  // mainEl.appendChild(playAgain);
-
-  // playAgain.addEventListener("click", init);
-
-  initialsInput.addEventListener("input", function() {
-    initialsInput.value = initialsInput.value.toUpperCase();
-    if ( initialsInput.value.length === 3 ) { 
-
-      //create object for this score
-      let thisScore = [ { type: quizType, name: initialsInput.value, score: score } ]; 
-
-      //get highscores from memory
-      let storedScores = JSON.parse(localStorage.getItem("highScores")); 
-      if (test) { console.log("storedScore",storedScores); }
-
-      if (storedScores !== null) { 
-        storedScores.push(thisScore[0]); 
-      } else {
-        storedScores = thisScore;
-      }
-
-      localStorage.setItem("highScores", JSON.stringify(storedScores));
-      highScores();
-    }
-  });
-//Capture remaining time on game timer as each user's score
-  let userScore = (gameTimer);
-
-function highScores() {
-  stopTime();
-  clearDetails();
-
-  timerTab.setAttribute("style");
-  highscoreDiv.addEventListener("click", highScores);
-  //get scores from storage
-  let storedScores = JSON.parse(localStorage.getItem("highScores")); 
-
-  // draw heading
-  let heading = document.createElement("h2");
-  heading.setAttribute("id", "main-heading");
-  heading.textContent = "Top 5 High Score Hall of Fame";
-
-  mainEl.appendChild(heading);
-
-  // Render a new li for each score
-  // TODO check for this error 
-  if ( storedScores !== null ) {
-    // sort scores
-    storedScores.sort((a,b) => (a.score < b.score) ? 1: -1);
-
-    // sets the number of scores to display to 5 or the number of games played. Which ever is less
-    let numScores2Display = 5;
-    if ( storedScores.length < 5 ) { 
-      numScores2Display = storedScores.length; 
-    }
-
-    for (var i = 0; i < numScores2Display; i++) {
-      var s = storedScores[i];
-
-      var p = document.createElement("p");
-      p.textContent = s.name + " " + s.score + " ( " + s.type + " )";
-      mainEl.appendChild(p);
-    }
-  } else {
-    var p = document.createElement("p");
-    p.textContent =  "Your Initials Here!"
-    mainEl.appendChild(p);
-  }
- // creates button to start the game
- let playAgain = document.createElement("button");
- playAgain.setAttribute("id", "playAgain");
- playAgain.setAttribute("class", "btn btn-secondary");
- playAgain.textContent = "Play!";
-
- mainEl.appendChild(playAgain);
-
- playAgain.addEventListener("click", init);
-}
+//attempting to display high score
+  // function renderMyScore() {
+     
+  //   // Render a new li for each todo
+  //   for (var i = 0; i < myScore.length; i++) {
+  //     var myScore = myScore[i];
+  
+  //     var li = document.createElement("li");
+  //     li.textContent = myScore;
+  //     highscore.appendChild(li);
+  //   }
+  // }
