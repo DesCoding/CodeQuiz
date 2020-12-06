@@ -74,7 +74,7 @@ console.log(this)
   // const myScore = [...JSON.parse(hsTable), result] 
   // localStorage.setItem('highscore', JSON.stringify(myScore))
   console.log(myScore)
-  alert(initials + " Your socre is "+secondsLeft)
+  alert(initials + " your highscore is "+secondsLeft)
   
   
   //set updated high score array to local storage
