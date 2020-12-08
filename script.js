@@ -3,7 +3,6 @@ const startButton = document.getElementById('startButton');
 const quizContainer = document.getElementById('quizQuestions');
 const resultsContainer = document.getElementById('results');
 const gameTimerEl = document.getElementById('gameTimer');
-const highscoreDiv = document.querySelector ("#highscore");
 var secondsLeft = 100;
 var score = 100 - secondsLeft;
 
@@ -16,7 +15,19 @@ function buildQuiz(){
 }
 
 function showResults(){
-  var highscore = JSON.parse(localStorage.getItem(highscore))
+  var bragHighscore = JSON.parse(localStorage.getItem("highscore"))
+  highscore=[]
+  console.log(highscore)
+  console.log(bragHighscore)
+  if (bragHighscore !== null){
+    highscore.push(bragHighscore)
+    for(var i=0; i < bragHighscore.length; i++){
+      const resultsPlacement = document.createElement("p")
+      resultsPlacement.append("Player Initials: " + bragHighscore[i].userName + " High Score:"+ bragHighscore[i].highScores)
+      resultsContainer.append(resultsPlacement)
+  }
+  }
+
 }
 var timerInterval;
 
@@ -64,10 +75,10 @@ console.log(this)
     userName: initials,
     highScores: gameTimerEl.innerHTML
   }
+  console.log(highscore)
   //adding my score object data to the array of highscore
   highscore.push(myScore)
-  highscore = myScore
-
+  console.log(highscore)
   //get score and initials
   let hsTable = localStorage.getItem("highscore")
   
@@ -75,10 +86,11 @@ console.log(this)
   // localStorage.setItem('highscore', JSON.stringify(myScore))
   console.log(myScore)
   alert(initials + " your highscore is "+secondsLeft)
-  
+  i = 0;
   
   //set updated high score array to local storage
   localStorage.setItem("highscore", JSON.stringify(highscore))
+  showResults()
 } 
 }
 //choose quesitons and assign styling for correct vs not correct answers
@@ -106,10 +118,11 @@ function pickQuestions(index){
   quizContainer.append(buttonPlacement);
   }
 }
+  showResults()
 
 // After click of start button, show questions
 startButton.addEventListener('click', showQuestions)
-startButton.addEventListener('click', showResults);
+
 
 //array of questions for quiz
 const myQuestions = [
