@@ -17,18 +17,19 @@ function buildQuiz(){
 function showResults(){
   var bragHighscore = JSON.parse(localStorage.getItem("highscore"))
   highscore=[]
-  console.log(highscore)
-  console.log(bragHighscore)
+  
   if (bragHighscore !== null){
     highscore.push(bragHighscore)
+    
     for(var i=0; i < bragHighscore.length; i++){
-      const resultsPlacement = document.createElement("p")
-      resultsPlacement.append("Player Initials: " + bragHighscore[i].userName + " High Score:"+ bragHighscore[i].highScores)
+      let resultsPlacement = document.createElement("p")
+      resultsPlacement.append("Player Initials: " + bragHighscore[i].userName + " High Score: "+ bragHighscore[i].highScores)
       resultsContainer.append(resultsPlacement)
+      console.log(resultsPlacement)
   }
   }
-
 }
+
 var timerInterval;
 
 function showQuestions(){
@@ -56,43 +57,38 @@ console.log(this)
   //Time penalty subtracts 15 seconds from timer if answer is incorrect.
   } else {
     secondsLeft = secondsLeft - 15;
-  
-
   }  
   if(i<myQuestions.length){
-    
+    console.log(myQuestions.length)
   pickQuestions(i) 
 
-}else {
+  }else {
   //clears final question from the screen
   quizContainer.innerHTML=""
   //prompting user to input initials
    var initials = prompt("Please enter your initials.")
    //stops the game time
    clearInterval(timerInterval);
+
   //create object to capture initials and high score
   var myScore = {
     userName: initials,
     highScores: gameTimerEl.innerHTML
   }
-  console.log(highscore)
+ 
   //adding my score object data to the array of highscore
   highscore.push(myScore)
-  console.log(highscore)
-  //get score and initials
-  let hsTable = localStorage.getItem("highscore")
-  
-  // const myScore = [...JSON.parse(hsTable), result] 
-  // localStorage.setItem('highscore', JSON.stringify(myScore))
   console.log(myScore)
-  alert(initials + " your highscore is "+secondsLeft)
+  //alerting user of thier score
+  alert("Hello " + initials + " your highscore is "+secondsLeft)
   i = 0;
-  
+   
   //set updated high score array to local storage
   localStorage.setItem("highscore", JSON.stringify(highscore))
   showResults()
 } 
 }
+
 //choose quesitons and assign styling for correct vs not correct answers
 function pickQuestions(index){
   console.log(index)
