@@ -16,10 +16,8 @@ function buildQuiz(){
 
 function showResults(){
   var bragHighscore = JSON.parse(localStorage.getItem("highscore"))
-  highscore=[]
-  
+   resultsContainer.innerHTML = ""
   if (bragHighscore !== null){
-    highscore.push(bragHighscore)
     
     for(var i=0; i < bragHighscore.length; i++){
       let resultsPlacement = document.createElement("p")
@@ -81,6 +79,7 @@ console.log(this)
   console.log(myScore)
   //alerting user of thier score
   alert("Hello " + initials + " your highscore is "+secondsLeft)
+  secondsLeft = 100;
   i = 0;
    
   //set updated high score array to local storage
@@ -114,7 +113,6 @@ function pickQuestions(index){
   quizContainer.append(buttonPlacement);
   }
 }
-  showResults()
 
 // After click of start button, show questions
 startButton.addEventListener('click', showQuestions)
