@@ -10,10 +10,11 @@ The user's score is dependant upon how quickly they're able to correctly complet
 
 # Technology Used
 
-HTML
-CSS
-JavaScript
-JSON
+* HTML
+* CSS
+* Bootstrap
+* JavaScript
+* JSON
 
 # Deployed
 
